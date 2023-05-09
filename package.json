@@ -5,9 +5,9 @@
   "main": "",
   "scripts": {
     "dev": "nodemon src/app.js --exec babel-node --presets env",
-    "start": "nodemon src/app.js --exec babel-node --presets env",
+    "start": "node src/app.js --exec babel-node --presets env",
     "build": "babel src -d dist --source-maps inline --copy-files",
-    "serve": "node dist/app.js"
+    "serve": "nodemon dist/app.js"
   },
   "keywords": [],
   "author": "",

@@ -49,8 +49,8 @@ export default {
                 let userResponce;
                 userResponce = {
                     userData: user,
-                    company:company,
-                    token: token
+                    company,
+                    token
                 }
                 let result = makeApiResponce('LoggedIn Successfully', 1, OK, userResponce);
                 return res.json(result);
@@ -96,10 +96,15 @@ export default {
                 return res.status(BAD_REQUEST).json(result);
             } else {
                 const token = await getJWTToken({ id: user._id });
+                let company 
+                if(user.company){
+                    company = await companyModel.findById(user.company)
+                }
                 let userResponce;
                 userResponce = {
                     userData: user,
-                    token: token
+                    token,
+                    company
                 }
                 let result = makeApiResponce('LoggedIn Successfully', 1, OK, userResponce);
                 return res.json(result);
